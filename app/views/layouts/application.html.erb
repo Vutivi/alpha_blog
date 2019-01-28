@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <p style = "color: green"><%= flash[:notice] %></p>
+    <%= render 'layouts/messages' %>
     <%= yield %>
   </body>
 </html>

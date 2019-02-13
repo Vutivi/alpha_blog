@@ -2,7 +2,10 @@
   <h2 align="center" class="description"><%= @article.title %></h2>
   <hr>
   <%= simple_format(@article.description) %>
-  <p>Article by: <%= @article.user.username %></p>
+  <small>Article by: <%= @article.user.username %>,
+                     <%= time_ago_in_words(@article.created_at) %> ago,
+       last updated: <%= time_ago_in_words(@article.created_at) %> ago.
+  </small>
   <div class="article-actions">
       <%= link_to "edit", edit_article_path, class: "btn btn-xs btn-primary"%>
       <%= link_to "View all articles", articles_path, class: "btn btn-xs btn-success" %>

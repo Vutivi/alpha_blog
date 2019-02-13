@@ -1,13 +1,13 @@
 <h1>List of articles</h1>
-<%= link_to "Create new article", new_article_path %>
+<%= link_to "Create new article", new_article_path, class: "btn btn-primary" %>
 </br>
 </br>
-<table>
-  <tr>
-    <th>title</th>
-    <th>description</th>
-    <th>action</th>
-  </tr>
+<table class="table table-dark table-striped">
+  <thead>
+    <th scope="col">title</th>
+    <th scope="col">description</th>
+    <th scope="col">action</th>
+  </thead>
 
   <% @articles.each do |article| %>
     <tr>

@@ -1,5 +1,10 @@
 <h1 align="center">Available friends to follow</h1>
-
+<% if @users.empty? %>
+<div class="alert alert-warning" align="center">
+  <a href="#" class="close" data-dismiss="alert">&#215;</a>
+  <p>There are no users yet!</p>
+</div>
+<% else %>
 <div class="row">
   <div class="col-xs-8 col-xs-offset-2">
       <% @users.each do |user| %>
@@ -25,3 +30,4 @@
       <% end %>
   </div>
 </div>
+<% end %>

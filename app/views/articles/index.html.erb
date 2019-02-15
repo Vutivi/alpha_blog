@@ -5,4 +5,11 @@
 </div>
 <br>
 
-<%= render 'articles_list', obj: @articles %>
+<% if @articles.empty? %>
+  <div class="alert alert-warning" align="center">
+    <a href="#" class="close" data-dismiss="alert">&#215;</a>
+    <p>There are no articles yet!</p>
+  </div>
+<% else  %>
+    <%= render 'articles_list', obj: @articles %>
+<% end %>

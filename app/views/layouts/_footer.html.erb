@@ -4,10 +4,12 @@
       Copyright &copy; <a href="http://xanani.co.za">Xanani</a> With <i
       class="glyphicon glyphicon-heart"></i> from Vutivi.
     </small>
-    <nav>
-      <ul>
-        <li> <%= link_to "Articles", articles_path %> </li>
-      </ul>
-    </nav>
+    <% if logged_in? %>
+      <nav>
+        <ul>
+          <li> <%= link_to "Articles", articles_path %> </li>
+        </ul>
+      </nav>
+    <% end %>
   </footer>
 </div>

@@ -1,4 +1,13 @@
-<div class="center jumbotron">
-  <h1>Alpha Blog</h1>
-  <%= link_to "Sign up now", "#", class: "btn btn-primary btn-lg btn-xlarge" %>
+
+  <div class="row">
+    <div class="col-md-12 center">
+    <div class="col-xs-7" id = "welcome-image" >
+      <%= image_tag("blog.png", :alt => "Blog") %>
+    </div>
+    <div class="col-xs-5" id="login-home">
+        <div>
+          <%= render 'sessions/login' %>
+        </div>
+      </div>
+  </div>
 </div>

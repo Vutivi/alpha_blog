@@ -1,5 +1,8 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, except: [:show, :index]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
+
   def index
     @articles = Article.all
   end
@@ -9,26 +12,24 @@ class ArticlesController < ApplicationController
   end
 
   def show
-
   end
 
   def edit
-
-  end
+  end 
 
   def destroy
     if @article.destroy
-      flash[:success] = "Article was succesfully destroyed."
+      flash[:success] = "Article was succesfully destroyed!"
       redirect_to articles_path
     else
-      flash[:danger] = "Article cannot be destroyed."
+      flash[:danger] = "Article cannot be destroyed!"
     end
   end
 
   def create
     @article = Article.new(article_params)
     if @article.save
-      flash[:success] = "Article was succesfully created."
+      flash[:success] = "Article was succesfully created!"
       redirect_to article_path(@article)
     else
       render :new
@@ -37,10 +38,10 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
-      flash[:success] = "Article was succesfully updated."
+      flash[:success] = "Article was succesfully updated!"
       redirect_to article_path(@article)
     else
-      flash[:danger] = "Could not update article."
+      flash[:danger] = "Could not update article!"
       render :edit
     end
   end
@@ -53,5 +54,12 @@ class ArticlesController < ApplicationController
 
     def article_params
       params.require(:article).permit(:title, :description)
+    end
+
+    def require_same_user
+      if current_user != @article.user
+        flash[:danger] = "You can only edit or delete your own article!"
+        redirect_to root_path
+      end
     end
 end

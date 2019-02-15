@@ -1,0 +1,27 @@
+<h1 align="center">Available friends to follow</h1>
+
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+      <% @users.each do |user| %>
+        <% unless current_user && current_user == user %>
+            <div class="col-md-4 alert alert-light center" id="profile-intro">
+              <a href="#" class="close" data-dismiss="alert">&#215;</a>
+              <%= link_to gravatar_for(user, size: 70), user_path(user) %>
+              <br>
+              <small>
+                  <%=link_to user.username, user_path(user) %>
+              </small>
+              <br>
+              <small>
+                  <%= pluralize(user.articles.count, "article") if user.articles %>
+              </small>
+                <div class="user-actions">
+                    <%= link_to users_path, :class => 'btn btn-primary btn-xs' do %>
+                      <span class="glyphicon glyphicon-plus"></span><%= " follow" %>
+                    <% end %>
+                </div>
+        </div>
+          <% end %>
+      <% end %>
+  </div>
+</div>

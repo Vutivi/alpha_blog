@@ -2,14 +2,16 @@
   <h2 align="center" class="description"><%= @article.title %></h2>
   <hr>
   <%= simple_format(@article.description) %>
-  <small>Article by: <%= @article.user.username %>,
+  <small>Article by: <%= link_to @article.user.username, user_path(@article.user) %>,
                      <%= time_ago_in_words(@article.created_at) %> ago,
        last updated: <%= time_ago_in_words(@article.created_at) %> ago.
   </small>
   <div class="article-actions">
-      <%= link_to "edit", edit_article_path, class: "btn btn-xs btn-primary"%>
       <%= link_to "View all articles", articles_path, class: "btn btn-xs btn-success" %>
-      <%= link_to "Delete", article_path(@article), method: :delete, data: \
-      { confirm: 'Are you certain you want to delete this article?' }, class: "btn btn-xs btn-danger" %>
+      <% if current_user && current_user == @article.user%>
+        <%= link_to "edit", edit_article_path, class: "btn btn-xs btn-primary"%>
+        <%= link_to "Delete", article_path(@article), method: :delete, data: \
+        { confirm: 'Are you certain you want to delete this article?' }, class: "btn btn-xs btn-danger" %>
+      <% end %>
   </div>
 </div>

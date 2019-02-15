@@ -8,7 +8,12 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    if logged_in?
+      flash[:success] = "Already registered!"
+      redirect_to articles_path
+    else
+      @user = User.new
+    end
   end
 
   def show

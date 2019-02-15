@@ -1,5 +1,11 @@
 class SessionsController < ApplicationController
   def new
+    if logged_in?
+      flash[:success] = "Already signed in!"
+      redirect_to articles_path
+    else
+      @user = User.new
+    end
   end
 
   def create

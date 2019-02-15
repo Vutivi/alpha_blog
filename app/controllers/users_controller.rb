@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user, except: [:new]
+  before_action :require_user, except: [:new, :create]
   before_action :require_same_user, only: [:edit, :update, :destroy]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "Welcome to the Alpha Blog #{params[:username]}!"
-      redirect_to user_path(@user)
+      redirect_to root_path
     else
       flash[:danger] = "User could not be saved!"
       render :new

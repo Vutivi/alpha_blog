@@ -40,7 +40,7 @@
         </li>
         <li>
             <%= link_to sign_out_path, method: :delete, :class => 'button white' do %>
-              <span class="glyphicon glyphicon-user"></span><%= " Sign out" %>
+              <span class="glyphicon glyphicon-user"></span>Sign out, <%= "#{current_user.admin? ? "admin" : current_user.username}" %>
             <% end %>
         </li>
       <% else %>

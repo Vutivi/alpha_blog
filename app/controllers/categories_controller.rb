@@ -9,16 +9,6 @@ class CategoriesController < ApplicationController
     @categories = Category.paginate(page: params[:page], per_page: 10)
   end
 
-  def create
-    @category = Category.new(category_params)
-    if @category.save
-      flash[:success] = "Category succesfully saved!"
-      redirect_to categories_path
-    else
-      flash[:danger] = "Category could not be saved!"
-      render :new
-     end
-  end
 
   def show
     @category_articles = @category.articles.paginate(:page => params[:page], :per_page => 5)
@@ -27,7 +17,34 @@ class CategoriesController < ApplicationController
   def edit
   end
 
+  def create
+    @category = Category.new(category_params)
+    if @category.save
+      flash[:success] = "Category succesfully saved!"
+      redirect_to categories_path
+    else
+      flash[:danger] = "Category could not be saved!"
+      render :new
+    end
+  end
+
   def update
+    if @category.update(category_params)
+      flash[:success] = "Category succesfully updated!"
+      redirect_to categories_path
+    else
+      flash[:danger] = "Category could not be updated!"
+      render :edit
+    end
+  end
+
+  def destroy
+    if @category.destroy
+      flash[:success] = "Category have been succesfully destroyed!"
+      redirect_to categories_path
+    else
+      flash[:danger] = "Category could not be destroyed!"
+    end
   end
 
   private

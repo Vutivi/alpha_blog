@@ -1,8 +1,10 @@
 <h1 align="center">Listing all categories</h1>
 <hr>
-<div align="center">
-  <%= link_to "New category", new_category_path, class: "btn btn-primary" %>
-</div>
+<% if current_user.admin? %>
+  <div align="center">
+    <%= link_to "New category", new_category_path, class: "btn btn-primary" %>
+  </div>
+<% end %>
 <br>
 <% if @categories.empty? %>
   <div class="alert alert-warning" align="center">

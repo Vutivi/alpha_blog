@@ -1,0 +1,2 @@
+app_search_host_identifier: [HOST_IDENTIFIER] # It should start with "host-"
+app_search_api_key: [API_KEY] # It should start with "private-"

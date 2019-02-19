@@ -1,0 +1,15 @@
+<h1 align="center">Searched articles</h1>
+<hr>
+<div align="center">
+  <%= link_to "New article", new_article_path, class: "btn btn-primary" %>
+</div>
+<br>
+
+<% if @articles.empty? %>
+  <div class="alert alert-warning" align="center">
+    <a href="#" class="close" data-dismiss="alert">&#215;</a>
+    <p>There are no articles yet!</p>
+  </div>
+<% else  %>
+    <%= render 'articles/articles_list', obj: @articles %>
+<% end %>

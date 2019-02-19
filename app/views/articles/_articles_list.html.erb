@@ -12,6 +12,9 @@
                last updated: <%= time_ago_in_words(article.created_at) %> ago.
           </small>
         </div>
+        <% if article.categories.any? %>
+          <p>tags: <%= render article.categories %></p>
+        <% end %>
         <% if current_user && current_user == article.user || current_user.admin?%>
           <div class="article-actions">
               <%= link_to "edit", edit_article_path(article), class: "btn btn-xs btn-primary"%>

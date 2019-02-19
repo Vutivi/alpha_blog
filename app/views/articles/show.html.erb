@@ -6,6 +6,9 @@
                      <%= time_ago_in_words(@article.created_at) %> ago,
        last updated: <%= time_ago_in_words(@article.created_at) %> ago.
   </small>
+  <% if @article.categories.any? %>
+    <p>tags: <%= render @article.categories %></p>
+  <% end %>
   <div class="article-actions">
       <%= link_to "View all articles", articles_path, class: "btn btn-xs btn-success" %>
       <% if current_user && current_user == @article.user || current_user.admin%>

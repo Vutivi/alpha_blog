@@ -20,6 +20,9 @@
           <div class="article-title">
             <%=link_to category.name, category_path(category) %>
           </div>
+          <% if category.articles.any? %>
+            <small><%= pluralize(category.articles.count, "article") %></small>
+          <% end %>
           <% if current_user.admin? %>
             <div class="article-actions">
                 <%= link_to "edit", edit_category_path(category), class: "btn btn-xs btn-primary"%>

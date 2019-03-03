@@ -7,7 +7,7 @@
         </div>
         <div class="article-body">
           <%= truncate(simple_format(article.description), length: 200, escape: false) %>
-          <small>Article by: <%= article.user.username %>,
+          <small>Article by: <%= link_to article.user.username, user_path(article.user) %>,
                              <%= time_ago_in_words(article.created_at) %> ago,
                last updated: <%= time_ago_in_words(article.created_at) %> ago.
           </small>

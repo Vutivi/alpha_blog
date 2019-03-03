@@ -2,7 +2,8 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @user = User.new(email: "vutivi@alphablog.co.za",username: "vutivi", password: "password")
+    @user  = User.new(email: "vutivi@alphablog.co.za",username: "vutivi-foo", password: "password")
+    @user1 = User.new(email: "hope@alphablog.co.za",username: "hope-bar", password: "password")
     @category = Category.new(name: "sports")
   end
 
@@ -79,6 +80,17 @@ class UserTest < ActiveSupport::TestCase
     assert_difference 'Article.count', -1 do
       @user.destroy
     end
+  end
+
+  test "should follow and unfollow a user" do
+    vutivi = @user
+    hope   = @user1
+    assert_not vutivi.following?(hope)
+    vutivi.follow(hope)
+    assert vutivi.following?(hope)
+    assert hope.followers.include?(vutivi)
+    vutivi.unfollow(hope)
+    assert_not vutivi.following?(hope)
   end
 
 end

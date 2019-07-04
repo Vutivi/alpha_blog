@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is app was built as part of improving my skills in Ruby on Rails. It is a blog sharing site that also allows for following of bloggers, it is hosted on Heroku on this link: https://udemy-alphablog.herokuapp.com/
 
 Things you may want to cover:
 
-* Ruby version
+* This app was built with ruby 2.5.1 and rails 5.2.2
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Configuration
+* git clone git@github.com:Vutivi/alpha_blog.git
+* cd alpha_blog
+* bundle
+* rake db:create
+* rake db:migrate
+* rails s
